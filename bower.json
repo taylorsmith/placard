@@ -1,7 +1,7 @@
 {
   "name": "placard",
   "main": "placard.js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/taylorsmith/placard",
   "authors": [
     "Taylor Smith <mail@taylorsmith.net>"

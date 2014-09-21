@@ -1,6 +1,6 @@
 {
   "name": "placard",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A dead simple interface for creating Google Maps with multiple points.",
   "main": "placard.js",
   "scripts": {
