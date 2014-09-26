@@ -1,17 +1,12 @@
 (function(window, google) {
   'use strict';
 
-  var Placard = {
-    Map: function(el, config) {
-      this.el = el;
-      this.config = config;
-      this._map = this._createMap();
-    },
+  var Placard = {};
 
-    Point: function(point) {
-      this.lat = point.lat;
-      this.lng = point.lng;
-    }
+  Placard.Map = function(el, config) {
+    this.el = el;
+    this.config = config;
+    this._map = this._createMap();
   };
 
   Placard.Map.prototype._createMap = function() {
@@ -23,6 +18,11 @@
     newPoint.addToMap(this);
 
     return this;
+  };
+
+  Placard.Point = function(point) {
+    this.lat = point.lat;
+    this.lng = point.lng;
   };
 
   Placard.Point.prototype.addToMap = function(map) {
