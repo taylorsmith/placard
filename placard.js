@@ -23,15 +23,46 @@
   Placard.Point = function(point) {
     this.lat = point.lat;
     this.lng = point.lng;
+    this.info = point.info;
+    this.window = this._createWindow();
   };
 
   Placard.Point.prototype.addToMap = function(map) {
-    new google.maps.Marker({
+    var self = this;
+
+    var marker = new google.maps.Marker({
       position: new google.maps.LatLng(this.lat, this.lng),
       map: map._map
     });
 
+    if (this.info) {
+      google.maps.event.addListener(marker, 'click', function() {
+        self.window._infoWindow.open(map._map, marker);
+      });
+    }
+
     return this;
+  };
+
+  Placard.Point.prototype._createWindow = function() {
+    if (this.info) {
+      return new Placard.Window(this.info);
+    }
+  };
+
+  Placard.Window = function(info) {
+    this.title = info.title;
+    this.text = info.text;
+    this._infoWindow = this.createInfoWindow();
+  };
+
+  Placard.Window.prototype.createInfoWindow = function() {
+    return new google.maps.InfoWindow({
+      content: '<div id="content">' +
+                 '<h1>' + this.title  + '</h1>' +
+                 '<p>' + this.text + '</p>' +
+               '</div>'
+    });
   };
 
   window.Placard = Placard;
